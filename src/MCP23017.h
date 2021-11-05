@@ -60,11 +60,12 @@ class MCP23017
 private:
 	TwoWire* _bus;
 	uint8_t _deviceAddr;
+	bool _initialize;
 public:
 	/**
 	 * Instantiates a new instance to interact with a MCP23017 at the specified address.
 	 */
-	MCP23017(uint8_t address, TwoWire& bus = Wire);
+	MCP23017();
 	~MCP23017();
 #ifdef _DEBUG
 	void debug();
@@ -76,7 +77,7 @@ public:
 	 * 
 	 * See "3.2.1 Byte mode and Sequential mode".
 	 */
-	void init();
+	void init(uint8_t address, TwoWire& bus = Wire);
 	/**
 	 * Controls the pins direction on a whole port at once.
 	 * 
